@@ -1,16 +1,20 @@
 %% Initialization
-n_agents = 3;
+n_agents = 5;
 
-A = [
-        [0,0,0];
-        [1,0,1];
-        [1,1,0];        
+A=[
+    [0,0,0,0,0];
+    [1,0,1,0,1];
+    [1,1,0,1,0];
+    [1,0,1,0,1];
+    [1,1,0,1,0]
     ];
 
-D = [
-        [0,0,0];
-        [0,2,0];
-        [0,0,2];        
+D=[
+    [0,0,0,0,0];
+    [0,3,0,0,0];
+    [0,0,3,0,0];
+    [0,0,0,3,0];
+    [0,0,0,0,3]
     ];
 
 A = sym(A);
@@ -26,15 +30,15 @@ y = str2sym(y);
 theta = sprintfc('theta_%d(t)', 1:n_agents);
 theta = str2sym(theta);
 
-u = sprintfc('x_%d(t)', 1:n_agents);
-u= str2sym(x);
+u = sprintfc('u_%d(t)', 1:n_agents);
+u= str2sym(u);
 
 
-w = sprintfc('y_%d(t)', 1:n_agents);
-w = str2sym(y);
+w = sprintfc('w_%d(t)', 1:n_agents);
+w = str2sym(w);
 
-r = sprintfc('theta_%d(t)', 1:n_agents);
-r = str2sym(theta);
+r = sprintfc('r_%d(t)', 1:n_agents);
+r = str2sym(r);
 
 R{n_agents} = 1:n_agents;
 
@@ -86,7 +90,7 @@ eta = sym(eta);
 delta = sym(delta);
 
 % %% Sigma
-sigma = sym(zeros(n_agents,n_agents));
+sigma = sym(zeros(length(eta(:,1)),n_agents));
 
 % for i=1:n_agents
 %     for j=1:n_agents    
@@ -114,4 +118,6 @@ sigma_dot = sym(zeros(size(sigma)));
 for i=1:n_agents
     sigma_dot(:,i) = diff(sigma(:,i),'t');
 end
+
+sigma_dot = subs(sigma_dot, diff(eta,'t'),eta_dot);
 
