@@ -92,12 +92,6 @@ delta = sym(delta);
 % %% Sigma
 sigma = sym(zeros(length(eta(:,1)),n_agents));
 
-% for i=1:n_agents
-%     for j=1:n_agents    
-% 	    sigma(:,i) = sigma(:,i) - A(i,j) * (eta_dot{:,j} + lambda_sigma * (eta{:,j} + delta{i,j}));
-% 	end
-% end
-
 for i=1:n_agents
     
     for j=1:n_agents
@@ -121,3 +115,29 @@ end
 
 sigma_dot = subs(sigma_dot, diff(eta,'t'),eta_dot);
 
+%% Formation
+delta_x_f=[
+    [0,0,0,0,0];
+    [-1,0,-1,0,-1];
+    [0,1,0,-1,0];
+    [1,0,1,0,1];
+    [0,1,0,-1,0]
+    ];
+
+delta_y_f=[
+    [0,0,0,0,0];
+    [0,0,1,0,-1];
+    [-1,-1,0,-1,0];
+    [0,0,1,0,-1];
+    [1,1,0,1,0]
+    ];
+
+delta_theta_f=zeros(size(A));
+
+for i=1:n_agents
+    for j=1:n_agents
+        delta_x(i,j) = delta_x_f(i,j);
+        delta_y(i,j) = delta_x_f(i,j);
+        delta_theta(i,j) = delta_x_f(i,j);    
+    end 
+end
