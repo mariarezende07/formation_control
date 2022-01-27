@@ -5,18 +5,19 @@ close all
 clc
 
 n_agents = 3;
+
 A = [
-        [0,1,1];
+        [0,0,0];
         [1,0,1];
         [1,1,0];        
     ];
 
 D = [
-        [2,0,0];
+        [0,0,0];
         [0,2,0];
         [0,0,2];        
     ];
-
+    
 A = sym(A);
 D = sym(D);
 
@@ -262,10 +263,3 @@ delta_theta_f=zeros(size(A));
 %     end 
 % end
 
-b_c=subs(b_c, delta_x,delta_x_f);
-b_c=subs(b_c, delta_y,delta_y_f);
-b_c=subs(b_c, delta_theta,delta_theta_f);
-
-sigma_syms=subs(sigma_syms, delta_x,delta_x_f);
-sigma_syms=subs(sigma_syms, delta_y,delta_y_f);
-sigma_syms=subs(sigma_syms, delta_theta,delta_theta_f);
