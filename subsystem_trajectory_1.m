@@ -1,39 +1,39 @@
-function [sigma,Q,x_SS_dot]=subsystem_trajectory_1(position,x_SS_1_0,x_SS_2_0,x_SS_3_0,...
+function [sigma,Q,x_SS_dot]=subsystem_trajectory_1(position,x_SS_1,x_SS_2,x_SS_3,...
     lambda_sigma,k_sigma,l_sigma,epsilon_sigma)
 
 %% INPUTS
 
-x_1=x_SS_1_0(1);
-y_1=x_SS_1_0(2);
-theta_1=x_SS_1_0(3);
+x_1=x_SS_1(1);
+y_1=x_SS_1(2);
+theta_1=x_SS_1(3);
 
-u_1=x_SS_1_0(4);
-v_1=x_SS_1_0(5);
-r_1=x_SS_1_0(6);
+u_1=x_SS_1(4);
+v_1=x_SS_1(5);
+r_1=x_SS_1(6);
 
 u_1_dot=0;
 v_1_dot=0;
 r_1_dot=0;
 
-x_2=x_SS_2_0(1);
-y_2=x_SS_2_0(2);
-theta_2=x_SS_2_0(3);
+x_2=x_SS_2(1);
+y_2=x_SS_2(2);
+theta_2=x_SS_2(3);
 
-u_2=x_SS_2_0(4);
-v_2=x_SS_2_0(5);
-r_2=x_SS_2_0(6);
+u_2=x_SS_2(4);
+v_2=x_SS_2(5);
+r_2=x_SS_2(6);
 
 u_2_dot=0;
 v_2_dot=0;
 r_2_dot=0;
 
-x_3=x_SS_3_0(1);
-y_3=x_SS_3_0(2);
-theta_3=x_SS_3_0(3);
+x_3=x_SS_3(1);
+y_3=x_SS_3(2);
+theta_3=x_SS_3(3);
 
-u_3=x_SS_3_0(4);
-v_3=x_SS_3_0(5);
-r_3=x_SS_3_0(6);
+u_3=x_SS_3(4);
+v_3=x_SS_3(5);
+r_3=x_SS_3(6);
 
 u_3_dot=0;
 v_3_dot=0;
