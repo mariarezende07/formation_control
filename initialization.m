@@ -13,31 +13,29 @@ sliding_variable
 clear A_c b_c nu R M f 
 
 %% Initial position
-x_SS_leader_0=[[6;0;0];[0;0;0]];
+x_SS_leader_0=[[0;0;0];[0;0;0]];
 x_SS_2_0=[[0;0;0];[0;0;0]];
-x_SS_3_0=[[8;0;0];[0;0;0]];
+x_SS_3_0=[[0;0;0];[0;0;0]];
 
 %% Control (cooperative reference filter)
 
-lambda_sigma=0.1;
-k_sigma=5;
-l_sigma=10;
+lambda_sigma=1;
+k_sigma=2;
+l_sigma=8;
 epsilon_sigma=0.1;
-m = 10;
 
 %% Desired trajectory
 
-x_0_points=[10;10;10];
-x_T_points=[10;10;10];
+x_0_points=[0;5;10;]*10;
+x_T_points=[5;10;0;]*10;
 
-y_0_points=[10;10;10];
-y_T_points=[10;10;10];
+y_0_points=[0;5;0;]*10;
+y_T_points=[5;0;0;]*10;
 
-theta_0_points=[0;0;0];
-theta_T_points=[0;0;0];
+theta_0_points=[0;0;pi/4;-pi/4]*10;
+theta_T_points=[pi/4;-pi/4;pi/2]*10;
 
 psi_trajectory=0;
-
 %% Simulation
 
 dt = 0.1; % Step size
