@@ -17,7 +17,6 @@ D = [
         [0,2,0];
         [0,0,2];        
     ];
-    
 A = sym(A);
 D = sym(D);
 
@@ -253,6 +252,7 @@ delta_y_f=[
     [0,0,1];
     ];
 
+
 delta_theta_f=zeros(size(A));
 
 % for i=1:n_agents
@@ -263,3 +263,6 @@ delta_theta_f=zeros(size(A));
 %     end 
 % end
 
+b_c=subs(sigma_syms, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);
+
+sigma_syms=subs(sigma_syms, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);
