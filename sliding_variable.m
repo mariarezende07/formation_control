@@ -263,6 +263,6 @@ delta_theta_f=zeros(size(A));
 %     end 
 % end
 
-b_c=subs(sigma_syms, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);
+b_c=subs(b_c, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);
 
 sigma_syms=subs(sigma_syms, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);
