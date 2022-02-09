@@ -1,4 +1,4 @@
-function eta_desired=trajectory(t,x_SS_alpha,x_0_points,x_T_points,y_0_points,y_T_points,theta_0_points,theta_T_points,T,psi_trajectory)
+function eta_desired=line_trajectory(t,x_SS_alpha,x_0_points,x_T_points,y_0_points,y_T_points,theta_0_points,theta_T_points,T,psi_trajectory)
 
 if t <= T
     
