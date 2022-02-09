@@ -14,8 +14,8 @@ clear A_c b_c nu R M f
 
 %% Initial position
 x_SS_leader_0=[[0;0;0];[0;0;0]];
-x_SS_2_0=[[0;0;0];[0;0;0]];
-x_SS_3_0=[[0;0;0];[0;0;0]];
+x_SS_2_0=[[1;1;0];[0;0;0]];
+x_SS_3_0=[[-1;-1;0];[0;0;0]];
 
 %% Control (cooperative reference filter)
 
