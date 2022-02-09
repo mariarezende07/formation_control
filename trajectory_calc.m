@@ -19,9 +19,8 @@ x_SS_2(:,1) = x_SS_2_0;
 x_SS_3(:,1) = x_SS_3_0;
 
 for i=1:N-1
-    
-    eta_desired(:,i) = trajectory(time_vector(i),x_SS_alpha,x_0_points,x_T_points,y_0_points,y_T_points,...
-    theta_0_points,theta_T_points,T,psi_trajectory);
+    %% Circular trajectory
+    eta_desired(:,i) = circle_trajectory(time_vector(i),x_SS_alpha,x_0_points,y_0_points,psi_trajectory);
 
     x_SS_leader_dot = leader(x_SS_leader(:,i),eta_desired(:,i));
     x_SS_leader(:,i+1) = x_SS_leader(:,i) + dt * x_SS_leader_dot;
