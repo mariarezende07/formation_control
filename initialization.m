@@ -27,21 +27,16 @@ k_sigma=1;
 l_sigma=2;
 epsilon_sigma=0.1;
 
-%% Desired trajectory - Circular
-% x_0_points=0;
-% 
-% y_0_points=0;
-% 
-% theta_0_points=0;
+%% Desired trajectory - Field points
 
-x_0_points=[0;5;10;];
-x_T_points=[5;10;0;];
+x_0_points=[0;20;30];
+x_T_points=[20;30;10];
 
-y_0_points=[0;5;0;];
-y_T_points=[5;0;0;];
+y_0_points=[0;30;50];
+y_T_points=[30;50;5];
 
-theta_0_points=[0;0;pi/4;-pi/4];
-theta_T_points=[pi/4;-pi/4;pi/2];
+theta_0_points=[0;0;0];
+theta_T_points=[0;0;0];
 
 psi_trajectory=0;
 %% Simulation
@@ -63,8 +58,10 @@ plot(x_SS_3(1,:),x_SS_3(2,:));
 plot(x_SS_4(1,:),x_SS_4(2,:));
 plot(x_SS_5(1,:),x_SS_5(2,:));
 plot(x_SS_6(1,:),x_SS_6(2,:));
-plot(2, 3, '.r', 'MarkerSize', 50);
+plot(20, 30, '.r', 'MarkerSize', 50);
 
+plot(30, 50, '.r', 'MarkerSize', 50);
+plot(10, 5, '.r', 'MarkerSize', 50);
 
 % 
 % 
