@@ -29,8 +29,8 @@ epsilon_sigma=0.1;
 
 %% Desired trajectory - Field points
 
-x_0_points=[0;20;30];
-x_T_points=[20;30;10];
+x_0_points=[0;20;50];
+x_T_points=[20;50;100];
 
 y_0_points=[0;30;50];
 y_T_points=[30;50;5];
@@ -60,8 +60,8 @@ plot(x_SS_5(1,:),x_SS_5(2,:));
 plot(x_SS_6(1,:),x_SS_6(2,:));
 plot(20, 30, '.r', 'MarkerSize', 50);
 
-plot(30, 50, '.r', 'MarkerSize', 50);
-plot(10, 5, '.r', 'MarkerSize', 50);
+plot(50, 50, '.r', 'MarkerSize', 50);
+plot(100, 5, '.r', 'MarkerSize', 50);
 
 % 
 % 
