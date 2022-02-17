@@ -47,6 +47,8 @@ T = final_time/length(x_0_points);
 trajectory_calc
 
 %% Ploting
+close all
+
 figure
 plot(x_SS_leader(1,:),x_SS_leader(2,:));
 hold on
@@ -54,6 +56,12 @@ plot(x_SS_2(1,:),x_SS_2(2,:));
 plot(x_SS_3(1,:),x_SS_3(2,:));
 plot(x_SS_4(1,:),x_SS_4(2,:));
 
+for i=1:100:length(time_vector)
+    plot([x_SS_leader(1,i),x_SS_2(1,i)],[x_SS_leader(2,i),x_SS_2(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_leader(1,i),x_SS_3(1,i)],[x_SS_leader(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_3(1,i),x_SS_4(1,i)],[x_SS_3(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_2(1,i),x_SS_4(1,i)],[x_SS_2(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+end
 % figure
 % plot(time_vector, sigma_2(1,:));
 % hold on
