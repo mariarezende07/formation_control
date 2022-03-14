@@ -33,8 +33,8 @@ epsilon_sigma=0.1;
 x_0_points=[0;0];
 x_T_points=[0;0];
 
-y_0_points=[0;1];
-y_T_points=[1;1];
+y_0_points=[0;10];
+y_T_points=[10;10];
 
 theta_0_points=[0;0];
 theta_T_points=[0;0];
@@ -63,8 +63,8 @@ plot(x_SS_4(1,:),x_SS_4(2,:));
 plot(x_SS_5(1,:),x_SS_5(2,:));
 plot(x_SS_6(1,:),x_SS_6(2,:));
 plot(x_SS_7(1,:),x_SS_7(2,:));
-
-for i=1:dt:final_time
+N = length(time_vector);
+for i=1:100:length(time_vector)
 
     
     plot([x_SS_2(1,i),x_SS_3(1,i)],[x_SS_2(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
