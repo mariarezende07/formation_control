@@ -14,11 +14,12 @@ clear A_c b_c nu R M f
 
 %% Initial position
 x_SS_leader_0=[[0;0;0];[0;0;0]];
-x_SS_2_0=[[0;1;0];[0;0;0]];
-x_SS_3_0=[[1;0;0];[0;0;0]];
+x_SS_2_0=[[0;2;0];[0;0;0]];
+x_SS_3_0=[[1;1;0];[0;0;0]];
 x_SS_4_0=[[1;-1;0];[0;0;0]];
-x_SS_5_0=[[-1;-1;0];[0;0;0]];
-x_SS_6_0=[[-1;0;0];[0;0;0]];
+x_SS_5_0=[[0;-2;0];[0;0;0]];
+x_SS_6_0=[[-1;-1;0];[0;0;0]];
+x_SS_7_0=[[-1;1;0];[0;0;0]];
 
 %% Control (cooperative reference filter)
 
@@ -29,14 +30,14 @@ epsilon_sigma=0.1;
 
 %% Desired trajectory - Field points
 
-x_0_points=[0;20;50];
-x_T_points=[20;50;100];
+x_0_points=[0;0];
+x_T_points=[0;0];
 
-y_0_points=[0;30;50];
-y_T_points=[30;50;5];
+y_0_points=[0;1];
+y_T_points=[1;1];
 
-theta_0_points=[0;0;0];
-theta_T_points=[0;0;0];
+theta_0_points=[0;0];
+theta_T_points=[0;0];
 
 psi_trajectory=0;
 %% Simulation
@@ -49,7 +50,10 @@ T = final_time/length(x_0_points);
 
 trajectory_calc
 
+
 %% Ploting
+close all
+
 figure
 plot(x_SS_leader(1,:),x_SS_leader(2,:));
 hold on
@@ -58,44 +62,18 @@ plot(x_SS_3(1,:),x_SS_3(2,:));
 plot(x_SS_4(1,:),x_SS_4(2,:));
 plot(x_SS_5(1,:),x_SS_5(2,:));
 plot(x_SS_6(1,:),x_SS_6(2,:));
-plot(20, 30, '.r', 'MarkerSize', 50);
+plot(x_SS_7(1,:),x_SS_7(2,:));
 
-plot(50, 50, '.r', 'MarkerSize', 50);
-plot(100, 5, '.r', 'MarkerSize', 50);
+for i=1:dt:final_time
 
-% 
-% 
-% figure
-% plot(time_vector, sigma_2(1,:));
-% hold on
-% plot(time_vector, sigma_2(2,:));
-% plot(time_vector, sigma_2(3,:));
-% 
-% figure
-% plot(time_vector, Q_2(1,:));
-% hold on
-% plot(time_vector, Q_2(2,:));
-% plot(time_vector, Q_2(3,:));
-% 
-% figure
-% subplot(3,1,1)
-% plot(time_vector, x_SS_leader(1,:));
-% hold on
-% plot(time_vector, x_SS_leader(2,:));
-% plot(time_vector, x_SS_leader(3,:));
-% xlabel('Tempo (s)')
-% ylabel('Deslocamento (m, rad)')
-% legend('x_{l}','y_{l}','\psi_{l}','location','best')
-% 
-% subplot(3,1,2)
-% plot(time_vector, x_SS_2(1,:));
-% hold on
-% plot(time_vector, x_SS_2(2,:));
-% plot(time_vector, x_SS_2(3,:));
-% 
-% subplot(3,1,3)
-% plot(time_vector, x_SS_3(1,:));
-% hold on
-% plot(time_vector, x_SS_3(2,:));
-% plot(time_vector, x_SS_3(3,:));
-% 
+    
+    plot([x_SS_2(1,i),x_SS_3(1,i)],[x_SS_2(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_2(1,i),x_SS_7(1,i)],[x_SS_2(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
+    
+    plot([x_SS_5(1,i),x_SS_4(1,i)],[x_SS_5(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_5(1,i),x_SS_6(1,i)],[x_SS_5(2,i),x_SS_6(2,i)],'color','k','LineWidth',1);
+    
+    plot([x_SS_6(1,i),x_SS_7(1,i)],[x_SS_6(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
+    
+    plot([x_SS_3(1,i),x_SS_4(1,i)],[x_SS_3(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+end
