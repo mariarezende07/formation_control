@@ -1,45 +1,17 @@
-function eta_desired=line_trajectory(t,x_SS_alpha,x_0_points,x_T_points,y_0_points,y_T_points,theta_0_points,theta_T_points,T,psi_trajectory)
+function eta_desired=line_trajectory(t, x_SS_alpha, x_SS_leader, target_point, obstacles)
 
-if t <= T
-    
-    x_desired=cycloid(x_0_points(1),x_T_points(1),T,t,0);
-    y_desired=cycloid(y_0_points(1),y_T_points(1),T,t,0);
-    theta_desired=cycloid(theta_0_points(1),theta_T_points(1),T,t,0);
 
-elseif t > T && t <= 2*T
-    
-    x_desired=cycloid(x_0_points(2),x_T_points(2),T,t,T);
-    y_desired=cycloid(y_0_points(2),y_T_points(2),T,t,T);
-    theta_desired=cycloid(theta_0_points(2),theta_T_points(2),T,t,T);
-    
-elseif t > 2*T && t <= 3*T
-    
-    x_desired=cycloid(x_0_points(3),x_T_points(3),T,t,2*T);
-    y_desired=cycloid(y_0_points(3),y_T_points(3),T,t,2*T);
-    theta_desired=cycloid(theta_0_points(3),theta_T_points(3),T,t,2*T);
-    
-elseif t > 3*T && t <= 4*T
-    
-    x_desired=cycloid(x_0_points(4),x_T_points(4),T,t,3*T);
-    y_desired=cycloid(y_0_points(4),y_T_points(4),T,t,3*T);
-    theta_desired=cycloid(theta_0_points(4),theta_T_points(4),T,t,3*T);
-    
-elseif t > 4*T && t <= 5*T
-    
-    x_desired=cycloid(x_0_points(5),x_T_points(5),T,t,4*T);
-    y_desired=cycloid(y_0_points(5),y_T_points(5),T,t,4*T);
-    theta_desired=cycloid(theta_0_points(5),theta_T_points(5),T,t,4*T);
-    
-else     
-    x_desired=cycloid(x_0_points(6),x_T_points(6),T,t,5*T);
-    y_desired=cycloid(y_0_points(6),y_T_points(6),T,t,5*T);
-    theta_desired=cycloid(theta_0_points(6),theta_T_points(6),T,t,5*T);    
-    
+x_desired= x_SS_leader(1) + (target_point(1) - x_SS_leader(1)) ;
+y_desired=x_SS_leader(2) + (target_point(2) - x_SS_leader(2)) ;
+theta_desired=0;
+
+if obstacles(1) == x_desired
+    y_desired = y_desided + 10;
 end
 
 eta_desired=[x_desired;y_desired;theta_desired];
 
-alfa=psi_trajectory;
+alfa=0;
 
 R=[
     [cos(alfa),-sin(alfa),0];
