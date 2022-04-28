@@ -30,7 +30,7 @@ epsilon_sigma=0.1;
 
 %% Desired trajectory - Field points
 
-target_point = [10,0,0];
+target_point = [20,0,0];
 obstacles = [5,0,0];
 
 psi_trajectory=0;
@@ -50,23 +50,29 @@ close all
 figure
 plot(x_SS_leader(1,:),x_SS_leader(2,:));
 hold on
-plot(x_SS_2(1,:),x_SS_2(2,:));
-plot(x_SS_3(1,:),x_SS_3(2,:));
-plot(x_SS_4(1,:),x_SS_4(2,:));
-plot(x_SS_5(1,:),x_SS_5(2,:));
-plot(x_SS_6(1,:),x_SS_6(2,:));
-plot(x_SS_7(1,:),x_SS_7(2,:));
-N = length(time_vector);
-for i=1:100:length(time_vector)
+plot(x_SS_leader(1,:),x_SS_leader(3,:));
+% plot(x_SS_2(1,:),x_SS_2(2,:));
+% plot(x_SS_3(1,:),x_SS_3(2,:));
+% plot(x_SS_4(1,:),x_SS_4(2,:));
+% plot(x_SS_5(1,:),x_SS_5(2,:));
+% plot(x_SS_6(1,:),x_SS_6(2,:));
+% plot(x_SS_7(1,:),x_SS_7(2,:));
 
-    
-    plot([x_SS_2(1,i),x_SS_3(1,i)],[x_SS_2(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_2(1,i),x_SS_7(1,i)],[x_SS_2(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
-    
-    plot([x_SS_5(1,i),x_SS_4(1,i)],[x_SS_5(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_5(1,i),x_SS_6(1,i)],[x_SS_5(2,i),x_SS_6(2,i)],'color','k','LineWidth',1);
-    
-    plot([x_SS_6(1,i),x_SS_7(1,i)],[x_SS_6(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
-    
-    plot([x_SS_3(1,i),x_SS_4(1,i)],[x_SS_3(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
-end
+plot(5, 0, 'bo', 'MarkerSize', 7);
+
+
+% for i=1:100:length(time_vector)
+% 
+%     
+%     plot([x_SS_2(1,i),x_SS_3(1,i)],[x_SS_2(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
+%     plot([x_SS_2(1,i),x_SS_7(1,i)],[x_SS_2(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
+%     
+%     plot([x_SS_5(1,i),x_SS_4(1,i)],[x_SS_5(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+%     plot([x_SS_5(1,i),x_SS_6(1,i)],[x_SS_5(2,i),x_SS_6(2,i)],'color','k','LineWidth',1);
+%     
+%     plot([x_SS_6(1,i),x_SS_7(1,i)],[x_SS_6(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
+%     
+%     plot([x_SS_3(1,i),x_SS_4(1,i)],[x_SS_3(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+% end
+
+axis equal
