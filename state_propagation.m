@@ -7,8 +7,8 @@ eta_5(:,1) = [0;-2;0];
 eta_6(:,1) = [-1;-1;0];
 eta_7(:,1) = [-1;1;0];
 
-lambda_sigma=1;
-k_sigma=10;
+lambda_sigma=0.001;
+k_sigma=1;
 
 m = 10;
 Iz = 0.1;
@@ -44,8 +44,9 @@ for i=1:N-1
     [sin(theta),cos(theta),0];
     [0,0,1];
     ];
-    R_dot = [[-sin(theta)*theta + r * cos(theta),-cos(theta)*theta + r * -sin(theta),0];
-    [cos(theta)*theta + r * sin(theta),-sin(theta)*theta + r * cos(theta),0];
+
+    R_dot = [[-sin(theta),-cos(theta),0];
+    [cos(theta),-sin(theta),0];
     [0,0,0];
     ];
     
@@ -55,7 +56,9 @@ for i=1:N-1
     
     sigma = eta_dot_tilt + lambda_sigma * eta_tilt;
     A = R;
-    x = 0;
+    
+    x = 1;
+    
     b = zeta_2_dot(:,i)*x -R_dot*zeta_2(:,i)*x -lambda_sigma*R*eta_tilt*x -k_sigma*tanh(sigma);
     
     tau(:,i) = udwadia_kalaba_control(A, b, R, x_SS_2(4:6,i));

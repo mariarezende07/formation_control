@@ -30,9 +30,14 @@ l_sigma=5;
 epsilon_sigma=0.01;
 
 %% Desired trajectory - Field points
+x_0_points=[0;0];
+x_T_points=[0;0];
 
-target_point = [20,0,0];
-obstacles = [5,0,0];
+y_0_points=[0;10];
+y_T_points=[10;10];
+
+theta_0_points=[0;0];
+theta_T_points=[0;0];
 
 psi_trajectory=0;
 %% Simulation
@@ -40,6 +45,7 @@ psi_trajectory=0;
 dt = 0.1; % Step size
 final_time = 100;
 time_vector = (0:dt:final_time).';
+T = final_time/length(x_0_points);
 %% Trajectory
 
 trajectory_calc
@@ -55,4 +61,3 @@ figure
 plot(x_SS_2(1,:), x_SS_2(2,:));
 % figure
 % plot(eta_2_dot(1,:), eta_2_dot(2,:));
-axis equal
