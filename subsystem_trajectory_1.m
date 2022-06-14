@@ -3,6 +3,13 @@ function [sigma_agent,Q,x_SS_dot]=subsystem_trajectory_1(agent,x_SS_1,x_SS_2,x_S
                                                         lambda_sigma,k_sigma,l_sigma,epsilon_sigma)
 
 %% INPUTS
+%% Robot parameters
+m = 10;
+Iz = 0.1;
+l = 0.6; %length of the mobile robot
+w = 0.4; %width of the mobile robot
+d = w/2;
+xbc = 0; ybc= 0; % coordinates of mass center
 
 x_1=x_SS_1(1);
 y_1=x_SS_1(2);
@@ -141,9 +148,8 @@ b_c = [[0,             k_sigma*tanh((lambda_sigma*x_1 - 3*lambda_sigma*x_2 + lam
 %% Calculation
 sigma_agent = sigma(:,agent);
 
-eval(['[nu,R,M,tau]=UGV_dynamics(x_',num2str(agent),',y_',num2str(agent),',theta_',num2str(agent),...
+eval(['[nu,R,M,f]=UGV_dynamics(x_',num2str(agent),',y_',num2str(agent),',theta_',num2str(agent),...
                                 ',u_',num2str(agent),',v_',num2str(agent),',r_',num2str(agent),');']);
-[x_SS_dot,Q]=cooperative_filter(A_c(:,:,agent),b_c(:,agent),nu,R,M,tau);
-
+[x_SS_dot,Q]=cooperative_filter(A_c(:,:,agent),b_c(:,agent),nu,R,M,f);
 
 end
