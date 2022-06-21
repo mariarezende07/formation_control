@@ -1,5 +1,5 @@
 function [sigma_agent,Q,x_SS_dot]=subsystem_trajectory_1(agent,x_SS_1,x_SS_2,x_SS_3,...
-                                                        lambda_sigma,k_sigma,l_sigma,epsilon_sigma);
+  lambda_sigma,k_sigma,l_sigma,epsilon_sigma);
 
 %% INPUTS
 
@@ -44,8 +44,8 @@ r_3_dot=0;
 A_c(:,:,2) =[[ 2*cos(theta_2), 2*sin(theta_2), 0];
 [-2*sin(theta_2), 2*cos(theta_2), 0];
 [              0,              0, 2];];
- 
- 
+
+
 A_c(:,:,3) =[[ 2*cos(theta_3), 2*sin(theta_3), 0];
 [-2*sin(theta_3), 2*cos(theta_3), 0];
 [              0,              0, 2];];
@@ -61,9 +61,8 @@ b_c = [[0, k_sigma*tanh((lambda_sigma*(x_1 - 1) - 2*lambda_sigma*x_2 + lambda_si
 %% Calculation
 sigma_agent = sigma(:,agent);
 
-eval(['[nu,R,M,tau]=UGV_dynamics(x_',num2str(agent),',y_',num2str(agent),',theta_',num2str(agent),...
+eval(['[nu,R,M,f]=UGV_dynamics(x_',num2str(agent),',y_',num2str(agent),',theta_',num2str(agent),...
                                 ',u_',num2str(agent),',v_',num2str(agent),',r_',num2str(agent),');']);
-[x_SS_dot,Q]=cooperative_filter(A_c(:,:,agent),b_c(:,agent),nu,R,M,tau);
-
+[x_SS_dot,Q]=cooperative_filter(A_c(:,:,agent),b_c(:,agent),nu,R,M,f);
 
 end
