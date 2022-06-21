@@ -85,7 +85,7 @@ plot(eta_7(1,:), eta_7(3,:));
 axis equal
 %%
 figure
-plot(x_SS_1(1,:), x_SS_1(3,:));
+plot(x_SS_leader(1,:), x_SS_leader(3,:));
 % hold on
 % plot(x_SS_2(1,:), x_SS_2(3,:));
 % plot(x_SS_3(1,:), x_SS_3(3,:));
