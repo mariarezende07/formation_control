@@ -28,9 +28,9 @@ y_ddot = F_y;
 theta_ddot = (atan(F_x/F_y) - x_SS_leader(3));
 
 
-x_SS_leader_dot=[
-    R*[x_dot;y_dot;theta_dot];
-    R* [x_ddot;y_ddot;theta_ddot]
+x_SS_leader_dot=[    
+    [x_ddot;y_ddot;theta_ddot];
+    [0;0;0];
     ];
 
 end

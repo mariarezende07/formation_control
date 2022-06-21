@@ -85,13 +85,13 @@ plot(eta_7(1,:), eta_7(3,:));
 axis equal
 %%
 figure
-plot(x_SS_leader(1,:), x_SS_leader(3,:));
-% hold on
-% plot(x_SS_2(1,:), x_SS_2(3,:));
-% plot(x_SS_3(1,:), x_SS_3(3,:));
-% plot(x_SS_4(1,:), x_SS_4(3,:));
-% plot(x_SS_5(1,:), x_SS_5(3,:));
-% plot(x_SS_6(1,:), x_SS_6(3,:));
-% plot(x_SS_7(1,:), x_SS_7(3,:));
+plot3(x_SS_leader(1,:), x_SS_leader(2,:), x_SS_leader(3,:));
+hold on
+plot3(x_SS_2(1,:), x_SS_2(2,:), x_SS_2(3,:));
+plot3(x_SS_3(1,:), x_SS_3(2,:), x_SS_3(3,:));
+plot3(x_SS_4(1,:), x_SS_4(2,:), x_SS_4(3,:));
+plot3(x_SS_5(1,:), x_SS_5(2,:), x_SS_5(3,:));
+plot3(x_SS_5(1,:), x_SS_6(2,:), x_SS_6(3,:));
+plot3(x_SS_5(1,:), x_SS_7(2,:), x_SS_7(3,:));
 
 axis equal
