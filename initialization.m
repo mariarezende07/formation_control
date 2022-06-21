@@ -79,7 +79,7 @@ plot(eta_1(1,:),eta_1(2,:));
 hold on
 plot(eta_2(1,:),eta_2(2,:));
 plot(eta_3(1,:),eta_3(2,:));
-
+plot(eta_4(1,:),eta_4(2,:));
 
 axis equal
 
@@ -92,5 +92,5 @@ plot(x_SS_leader(1,:),x_SS_leader(2,:));
 hold on
 plot(x_SS_2(1,:),x_SS_2(2,:));
 plot(x_SS_3(1,:),x_SS_3(2,:));
-
+plot(x_SS_4(1,:),x_SS_4(2,:));
 axis equal
