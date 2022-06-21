@@ -248,14 +248,14 @@ delta_x_f=[
     [0,-1,0,-1];
     [1,0,1,0];
     ];
-
+delta_x_f= delta_x_f.';
 delta_y_f=[
     [0,0,0,1];
     [0,0,1,1];
     [-1,-1,0,0];
     [-1,-1,1,0];
     ];
-
+delta_y_f= delta_y_f.';
 
 delta_theta_f=zeros(size(A));
 

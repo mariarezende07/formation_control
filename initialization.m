@@ -12,6 +12,7 @@ sliding_variable
 
 clear A_c b_c nu R M f 
 
+
 %% Initial position
 x_SS_leader_0=[[0;0;0];[0;0;0]];
 x_SS_2_0=[[1;0;0];[0;0;0]];
@@ -20,10 +21,10 @@ x_SS_4_0=[[1;-1;0];[0;0;0]];
 
 %% Control (cooperative reference filter)
 
-lambda_sigma=0.1;
+lambda_sigma=1;
 k_sigma=1;
-l_sigma=2;
-epsilon_sigma=0.1;
+l_sigma=5;
+epsilon_sigma=0.01;
 
 %% Desired trajectory - Circular
 x_0_points=[0;0];
@@ -39,60 +40,57 @@ psi_trajectory=0;
 %% Simulation
 
 dt = 0.1; % Step size
-final_time = 100;
+final_time = 10;
 time_vector = (0:dt:final_time).';
 T = final_time/length(x_0_points);
+
+N = length(time_vector);
+
 %% Trajectory
 
 trajectory_calc
+
+%%
+lambda_sigma_list=0.01:0.01:0.1;
+k_sigma_list=1:1:10;
+worst_error = 100;
+for i=1:10
+    lambda_sigma = lambda_sigma_list(i);
+    k_sigma = k_sigma_list(i);
+    state_propagation
+    erro = x_SS_leader(1:3,:) - eta_1;   
+    if max(erro,[],'all') < worst_error
+        worst_error = max(erro,[],'all');
+        k_sigma_best = k_sigma;
+        lambda_sigma_best = lambda_sigma;
+    end
+end
+%% 
+
+k_sigma = k_sigma_best;
+lambda_sigma = lambda_sigma_best;
+state_propagation
+%% Ploting
+close all
+
+figure
+
+plot(eta_1(1,:),eta_1(2,:));
+hold on
+plot(eta_2(1,:),eta_2(2,:));
+plot(eta_3(1,:),eta_3(2,:));
+
+
+axis equal
 
 %% Ploting
 close all
 
 figure
+
 plot(x_SS_leader(1,:),x_SS_leader(2,:));
 hold on
 plot(x_SS_2(1,:),x_SS_2(2,:));
 plot(x_SS_3(1,:),x_SS_3(2,:));
-plot(x_SS_4(1,:),x_SS_4(2,:));
 
-for i=1:100:length(time_vector)
-    plot([x_SS_leader(1,i),x_SS_2(1,i)],[x_SS_leader(2,i),x_SS_2(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_leader(1,i),x_SS_3(1,i)],[x_SS_leader(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_3(1,i),x_SS_4(1,i)],[x_SS_3(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_2(1,i),x_SS_4(1,i)],[x_SS_2(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
-end
-% figure
-% plot(time_vector, sigma_2(1,:));
-% hold on
-% plot(time_vector, sigma_2(2,:));
-% plot(time_vector, sigma_2(3,:));
-% 
-% figure
-% plot(time_vector, Q_2(1,:));
-% hold on
-% plot(time_vector, Q_2(2,:));
-% plot(time_vector, Q_2(3,:));
-% 
-% figure
-% subplot(3,1,1)
-% plot(time_vector, x_SS_leader(1,:));
-% hold on
-% plot(time_vector, x_SS_leader(2,:));
-% plot(time_vector, x_SS_leader(3,:));
-% xlabel('Tempo (s)')
-% ylabel('Deslocamento (m, rad)')
-% legend('x_{l}','y_{l}','\psi_{l}','location','best')
-% 
-% subplot(3,1,2)
-% plot(time_vector, x_SS_2(1,:));
-% hold on
-% plot(time_vector, x_SS_2(2,:));
-% plot(time_vector, x_SS_2(3,:));
-% 
-% subplot(3,1,3)
-% plot(time_vector, x_SS_3(1,:));
-% hold on
-% plot(time_vector, x_SS_3(2,:));
-% plot(time_vector, x_SS_3(3,:));
-
+axis equal

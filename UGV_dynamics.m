@@ -3,13 +3,20 @@ function [nu,R,M,tau]=UGV_dynamics(x,y,theta,u,v,r)
 %% PARAMETERS
 
 x_g=0;
-y_g=0;
 m=275;
 I_z=136.18;
 
-u_dot=-488.12;
-v_dot=-787.28;
-r_dot=-48.25;
+X_u_dot=-488.12;
+Y_v_dot=-787.28;
+Y_r_dot=0;
+N_r_dot=-48.25;
+
+X_u=-74.77;
+X_u_abs_u=-18.03;
+Y_v=-134.86;
+Y_v_abs_v=-34.05;
+N_r=-2.36;
+N_r_abs_r=-227.92;
 
 
 %% MODEL
@@ -22,12 +29,14 @@ R=[
 [0,0,1]
 ];
 
-M=[m, 0, -y_g*m;
-0, m, x_g*m;
--y_g*m, x_g*m, I_z+m*(x_g^2+y_g^2);];
+M=[
+[m-X_u_dot,0,0];
+[0,m-Y_v_dot,m*x_g-Y_r_dot];
+[0,m*x_g-Y_r_dot,I_z-N_r_dot]
+];
 
-tau =  [-m*x_g*r^2-m*v*r+m*u_dot*cos(theta)-m*v_dot*sin(theta)-m*r_dot*y_g;
-        -m*y_g*r^2+m*u*r+m*v_dot*cos(theta)+m*u_dot*sin(theta)+m*r_dot*x_g;
-        I_z*r_dot+m*r_dot*x_g^2+m*r_dot*y_g^2-m*u_dot*y_g*cos(theta)+m*v_dot*x_g*cos(theta)+m*u_dot*x_g*sin(theta)+m*v_dot*y_g*sin(theta)+m*r*u*x_g+m*r*v*y_g;];
-
-
+tau=[
+u*(X_u+X_u_abs_u*abs(u))-r*(Y_r_dot*r+Y_v_dot*v-m*r*x_g)+m*r*v;
+v*(Y_v+Y_v_abs_v*abs(v))+X_u_dot*r*u-m*r*u;
+r*(N_r+N_r_abs_r*abs(r))+u*(Y_r_dot*r+Y_v_dot*v-m*r*x_g)-X_u_dot*u*v
+];

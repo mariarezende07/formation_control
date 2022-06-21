@@ -84,9 +84,8 @@ b_c = [[0, k_sigma*tanh((lambda_sigma*x_4 - 3*lambda_sigma*x_2 + lambda_sigma*(x
 %% Calculation
 sigma_agent = sigma(:,agent);
 
-eval(['[nu,R,M,tau]=UGV_dynamics(x_',num2str(agent),',y_',num2str(agent),',theta_',num2str(agent),...
+eval(['[nu,R,M,f]=UGV_dynamics(x_',num2str(agent),',y_',num2str(agent),',theta_',num2str(agent),...
                                 ',u_',num2str(agent),',v_',num2str(agent),',r_',num2str(agent),');']);
-[x_SS_dot,Q]=cooperative_filter(A_c(:,:,agent),b_c(:,agent),nu,R,M,tau);
-
+[x_SS_dot,Q]=cooperative_filter(A_c(:,:,agent),b_c(:,agent),nu,R,M,f);
 
 end
