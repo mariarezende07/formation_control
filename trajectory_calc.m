@@ -1,4 +1,3 @@
-N = length(time_vector);
 
 x_SS_leader = zeros(6,N);
 x_SS_2 = zeros(6,N);
