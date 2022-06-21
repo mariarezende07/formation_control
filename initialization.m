@@ -79,35 +79,26 @@ close all
 
 %% Ploting
 close all
-% figure
+figure
+plot(eta_1(1,:), eta_1(2,:));
+hold on
 plot(eta_2(1,:), eta_2(2,:));
+plot(eta_3(1,:), eta_3(2,:));
+plot(eta_4(1,:), eta_4(2,:));
+plot(eta_5(1,:), eta_5(2,:));
+plot(eta_6(1,:), eta_6(2,:));
+plot(eta_7(1,:), eta_7(2,:));
+
 axis equal
 %%
 figure
+plot(x_SS_1(1,:), x_SS_1(2,:));
 hold on
 plot(x_SS_2(1,:), x_SS_2(2,:));
-% 
-% plot(x_SS_3(1,:), x_SS_3(2,:));
-% plot(x_SS_4(1,:), x_SS_4(2,:));
-% plot(x_SS_5(1,:), x_SS_5(2,:));
-% plot(x_SS_6(1,:), x_SS_6(2,:));
-% plot(x_SS_7(1,:), x_SS_7(2,:));
-% figure
+plot(x_SS_3(1,:), x_SS_3(2,:));
+plot(x_SS_4(1,:), x_SS_4(2,:));
+plot(x_SS_5(1,:), x_SS_5(2,:));
+plot(x_SS_6(1,:), x_SS_6(2,:));
+plot(x_SS_7(1,:), x_SS_7(2,:));
+
 axis equal
-%%
-figure
-hold on
-plot (time_vector, x_SS_2(1,:))
-plot (time_vector, x_SS_2(2,:))
-
-
-figure
-hold on
-plot (time_vector, eta_2(1,:))
-plot (time_vector, eta_2(2,:))
-%% 
-figure
-hold on
-plot(1:N-1,tau(1,:));
-plot(1:N-1,tau(2,:));
-plot(1:N-1,tau(3,:));
