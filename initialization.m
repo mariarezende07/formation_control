@@ -54,19 +54,13 @@ trajectory_calc
 state_propagation
 %% Ploting
 close all
-% figure
-plot(eta_2(1,:), eta_2(2,:));
-axis equal
-%%
-figure
-hold on
-plot(x_SS_2(1,:),x_SS_2(2,:));
-plot(x_SS_3(1,:),x_SS_3(2,:));
 
-for i=1:100:length(time_vector)
-    plot([x_SS_leader(1,i),x_SS_2(1,i)],[x_SS_leader(2,i),x_SS_2(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_2(1,i),x_SS_3(1,i)],[x_SS_2(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_leader(1,i),x_SS_3(1,i)],[x_SS_leader(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
-end
+figure
+
+plot(eta_1(1,:),eta_1(2,:));
+hold on
+plot(eta_2(1,:),eta_2(2,:));
+plot(eta_3(1,:),eta_3(2,:));
+
 
 axis equal
