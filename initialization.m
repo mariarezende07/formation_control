@@ -26,15 +26,14 @@ l_sigma=5;
 epsilon_sigma=0.01;
 
 %% Desired trajectory - Circular
-x_0_points=[0;0];
-x_T_points=[0;0];
+x_0_points=[0;5;10;]*10;
+x_T_points=[5;10;0;]*10;
 
-y_0_points=[0;1]*10;
-y_T_points=[1;1]*10;
+y_0_points=[0;5;0;]*10;
+y_T_points=[5;0;0;]*10;
 
-theta_0_points=[0;0];
-theta_T_points=[0;0];
-
+theta_0_points=[0;0;pi/4;-pi/4]*10;
+theta_T_points=[pi/4;-pi/4;pi/2]*10;
 
 psi_trajectory=0;
 %% Simulation
@@ -51,7 +50,7 @@ N = length(time_vector);
 trajectory_calc
 
 %%
-lambda_sigma_list=0.01:0.01:0.1;
+lambda_sigma_list=0.1:0.5:5;
 k_sigma_list=1:1:10;
 worst_error = 100;
 for i=1:10
