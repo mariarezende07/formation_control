@@ -17,9 +17,6 @@ for i=1:n_agents
     eval(['eta_',num2str(i),'_dot(:,1) = R_agent{',num2str(i),'}*zeta_',num2str(i),'(:,1)']);
     eval(['zeta_',num2str(i),'_dot(:,1) = [0;0;0]']);    
 
-    lambda_sigma=0.1;
-    k_sigma=5;
-
     m = 10;
     Iz = 0.1;
     l = 0.6; %length of the mobile robot
