@@ -1,5 +1,5 @@
 function [sigma_agent,Q,x_SS_dot]=subsystem_trajectory_1(agent,x_SS_1,x_SS_2,x_SS_3,...
-  lambda_sigma,k_sigma,l_sigma,epsilon_sigma);
+  lambda_sigma,k_sigma,l_sigma,epsilon_sigma)
 
 %% INPUTS
 

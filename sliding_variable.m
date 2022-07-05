@@ -255,14 +255,6 @@ delta_y_f= delta_y_f.';
 
 delta_theta_f=zeros(size(A));
 
-% for i=1:n_agents
-%     for j=1:n_agents
-%         delta_x(i,j) = delta_x_f(i,j);
-%         delta_y(i,j) = delta_x_f(i,j);
-%         delta_theta(i,j) = delta_x_f(i,j);    
-%     end 
-% end
-
 b_c=subs(b_c, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);
 
 sigma_syms=subs(sigma_syms, [delta_x,delta_y,delta_theta], [delta_x_f,delta_y_f,delta_theta_f]);

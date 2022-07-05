@@ -22,8 +22,8 @@ x_SS_3_0=[[1;-1;0];[0;0;0]];
 
 lambda_sigma=1;
 k_sigma=1;
-l_sigma=5;
-epsilon_sigma=0.01;
+l_sigma=10;
+epsilon_sigma=15;
 
 %% Desired trajectory - Circular
 x_0_points=[0;5;10;]*10;
@@ -39,7 +39,7 @@ psi_trajectory=0;
 %% Simulation
 
 dt = 0.1; % Step size
-final_time = 10;
+final_time = 100;
 time_vector = (0:dt:final_time).';
 T = final_time/length(x_0_points);
 
@@ -69,28 +69,6 @@ end
 k_sigma = k_sigma_best;
 lambda_sigma = lambda_sigma_best;
 state_propagation
-%% Ploting
-close all
-
-figure
-
-plot(eta_1(1,:),eta_1(2,:));
-hold on
-plot(eta_2(1,:),eta_2(2,:));
-plot(eta_3(1,:),eta_3(2,:));
-
-
-axis equal
 
 %% Ploting
-close all
-
-figure
-
-plot(x_SS_leader(1,:),x_SS_leader(2,:));
-hold on
-plot(x_SS_2(1,:),x_SS_2(2,:));
-plot(x_SS_3(1,:),x_SS_3(2,:));
-
-
-axis equal
+plots
