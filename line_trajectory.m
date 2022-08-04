@@ -42,8 +42,8 @@ eta_desired=[x_desired;y_desired;theta_desired];
 alfa=psi_trajectory;
 
 R=[
-    [cos(alfa),-sin(alfa),0];
-    [sin(alfa),cos(alfa),0];
+    [cos(alfa),sin(alfa),0];
+    [-sin(alfa),cos(alfa),0];
     [0,0,1]
     ];
 

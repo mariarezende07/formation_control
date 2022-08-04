@@ -27,16 +27,6 @@ x_ddot = F_x;
 y_ddot = F_y;
 theta_ddot = (atan(F_x/F_y) - x_SS_leader(3));
 
-% R=[
-% [cos(psi),-sin(psi),0]
-% [sin(psi),cos(psi),0]
-% [0,0,1]
-% ];
-
-% x_SS_leader_dot=[
-%     [x_dot;y_dot;psi_dot];
-%     [x_ddot;y_ddot;0]
-%     ];
  
 x_SS_leader_dot = [[x_ddot;y_ddot;theta_ddot];[0;0;0]];
 

@@ -36,13 +36,13 @@ for i=1:n_agents
 
         theta = eval(['eta_',num2str(i),'(3,',num2str(j),')']);
 
-        R = [[cos(theta),-sin(theta),0];
-        [sin(theta),cos(theta),0];
+        R = [[cos(theta),sin(theta),0];
+        [-sin(theta),cos(theta),0];
         [0,0,1];
         ];
 
-        R_dot = [[-sin(theta)*r,-cos(theta)*r,0];
-        [cos(theta)*r,-sin(theta)*r,0];
+        R_dot = [[-sin(theta)*r,cos(theta)*r,0];
+        [-cos(theta)*r,-sin(theta)*r,0];
         [0,0,0];
         ];
 

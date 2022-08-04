@@ -10,8 +10,8 @@ function eta_desired=circle_trajectory(t,x_SS_alpha,x_0_points,y_0_points,psi_tr
     alfa=psi_trajectory;
     
     R=[
-        [cos(alfa),-sin(alfa),0];
-        [sin(alfa),cos(alfa),0];
+        [cos(alfa),sin(alfa),0];
+        [-sin(alfa),cos(alfa),0];
         [0,0,1]
         ];
     

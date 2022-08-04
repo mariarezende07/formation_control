@@ -19,7 +19,7 @@ xlabel('x(m)')
 ylabel('y(m)')
 axis equal
 grid on
-print(figure_1,'-dpng','-r300','trajetoria-ref_formacao-triangular.png')
+print(figure_1,'-dpng','-r300','figuras/trajetoria-ref_formacao-triangular.png')
 %% Trajetória real
 
 
@@ -41,7 +41,7 @@ xlabel('x(m)')
 ylabel('y(m)')
 axis equal
 grid on
-print(figure_2,'-dpng','-r300','trajetoria-real_formacao-triangular.png')
+print(figure_2,'-dpng','-r300','figuras/trajetoria-real_formacao-triangular.png')
 
 %% Tau
 
@@ -56,9 +56,9 @@ plot(1:1000, tau(3,:),'LineWidth',2);
 title("Força de controle");
 
 xlabel('t(s)')
-ylabel('tau(N)')
+ylabel('\tau(N)')
 grid on
-print(figure_3,'-dpng','-r300','tau_formacao-triangular.png')
+print(figure_3,'-dpng','-r300','figuras/tau_formacao-triangular.png')
 
 %% Q
 
@@ -92,7 +92,7 @@ xlabel('t(s)')
 ylabel('')
 grid on
 
-print(figure_4,'-dpng','-r300','q_formacao-triangular.png')
+print(figure_4,'-dpng','-r300','figuras/q_formacao-triangular.png')
 %% Deslocamento de referência pelo tempo
 
 
@@ -100,100 +100,59 @@ figure_5 = figure;
 
 subplot(2,1,1)
 plot(1:1000,x_SS_leader(1,1:1000),'LineWidth',2);
+hold on
+plot(1:1000,x_SS_2(1,1:1000),'LineWidth',2);
+plot(1:1000,x_SS_3(1,1:1000),'LineWidth',2);
 xlabel('t(s)')
 ylabel('x(m)')
+legend('Líder','seguidor 1', 'seguidor 2','location','best');
+
 grid on
 
 subplot(2,1,2)
 plot(1:1000,x_SS_leader(2,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('y(m)')
-grid on
-
-sgtitle('Deslocamento do líder') 
-
-figure_6 = figure;
-
-subplot(2,1,1)
-plot(1:1000,x_SS_2(1,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('x(m)')
-grid on
-subplot(2,1,2)
+hold on
 plot(1:1000,x_SS_2(2,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('y(m)')
-grid on
-
-sgtitle('Deslocamento do agente 2') 
-
-figure_7 = figure;
-
-subplot(2,1,1)
-plot(1:1000,x_SS_3(1,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('x(m)')
-grid on
-
-subplot(2,1,2)
 plot(1:1000,x_SS_3(2,1:1000),'LineWidth',2);
 xlabel('t(s)')
 ylabel('y(m)')
+legend('Líder','seguidor 1', 'seguidor 2','location','best');
+
 grid on
-sgtitle('Deslocamento do agente 3') 
-print(figure_5,'-dpng','-r300','x1xt_formacao-triangular.png')
-print(figure_6,'-dpng','-r300','x2xt_formacao-triangular.png')
-print(figure_7,'-dpng','-r300','x2xt_formacao-triangular.png')
+
+sgtitle('Deslocamento dos agentes em relação ao tempo') 
+
+
+print(figure_5,'-dpng','-r300','figuras/x1xt_formacao-triangular.png')
 
 %% Deslocamento de real pelo tempo
 
 
-figure_8 = figure;
+figure_6 = figure;
 
 subplot(2,1,1)
 plot(1:1000,eta_1(1,1:1000),'LineWidth',2);
+hold on
+plot(1:1000,eta_2(1,1:1000),'LineWidth',2);
+plot(1:1000,eta_3(1,1:1000),'LineWidth',2);
 xlabel('t(s)')
 ylabel('x(m)')
+legend('Líder','seguidor 1', 'seguidor 2','location','best');
+
 grid on
 
 subplot(2,1,2)
 plot(1:1000,eta_1(2,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('y(m)')
-grid on
-
-sgtitle('Deslocamento do líder') 
-
-figure_9 = figure;
-
-subplot(2,1,1)
-plot(1:1000,eta_2(1,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('x(m)')
-grid on
-subplot(2,1,2)
+hold on
 plot(1:1000,eta_2(2,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('y(m)')
-grid on
-
-sgtitle('Deslocamento do agente 2') 
-
-figure_10 = figure;
-
-subplot(2,1,1)
-plot(1:1000,eta_3(1,1:1000),'LineWidth',2);
-xlabel('t(s)')
-ylabel('x(m)')
-grid on
-
-subplot(2,1,2)
 plot(1:1000,eta_3(2,1:1000),'LineWidth',2);
 xlabel('t(s)')
 ylabel('y(m)')
-grid on
-sgtitle('Deslocamento do agente 3') 
+legend('Líder','seguidor 1', 'seguidor 2','location','best');
 
-print(figure_8,'-dpng','-r300','e1xt_formacao-triangular.png')
-print(figure_9,'-dpng','-r300','e2xt_formacao-triangular.png')
-print(figure_10,'-dpng','-r300','e3xt_formacao-triangular.png')
+grid on
+
+sgtitle('Deslocamento real em relação ao tempo') 
+
+
+print(figure_6,'-dpng','-r300','figuras/e1xt_formacao-triangular.png')
