@@ -17,14 +17,14 @@ nu=[u;v;r];
 eta=[x;y;psi];
 
 R=[
-[cos(psi),-sin(psi),0]
-[sin(psi),cos(psi),0]
+[cos(psi),sin(psi),0]
+[-sin(psi),cos(psi),0]
 [0,0,1]
 ];
 
 R_dot=[
-    [-sin(psi)*r,-cos(psi)*r,0];
-    [cos(psi)*r,-sin(psi)*r,0];
+    [-sin(psi)*r,cos(psi)*r,0];
+    [-cos(psi)*r,-sin(psi)*r,0];
     [0,0,0]
     ];
 
