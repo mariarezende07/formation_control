@@ -64,8 +64,9 @@ for i=1:25
 end
 %% 
 
-k_sigma = k_sigma_best;
-lambda_sigma = lambda_sigma_best;
+k_sigma = k_sigma_best; %3.500
+lambda_sigma = lambda_sigma_best; %3.500
+
 state_propagation
 %% Ploting
 
