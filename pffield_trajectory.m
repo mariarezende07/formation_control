@@ -12,7 +12,7 @@ x_dot = x_SS_leader(4);
 y_dot = x_SS_leader(5);
 theta_dot = x_SS_leader(6);
 
-if (sqrt((x_obstacle - x_leader)^2 + (y_obstacle - y_leader)^2) <= 7^2)
+if (sqrt((x_obstacle - x_leader)^2 + (y_obstacle - y_leader)^2) <= 7)
     F_x =x_target - x_leader + (x_leader - x_obstacle)/(((x_leader - x_obstacle)^2 + (y_leader - y_obstacle)^2)^2);
     F_y =y_target - y_leader + (y_leader - y_obstacle)/(((x_leader - x_obstacle)^2 + (y_leader - y_obstacle)^2)^2);
 else
