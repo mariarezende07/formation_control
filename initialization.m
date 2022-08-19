@@ -30,8 +30,14 @@ l_sigma=5;
 epsilon_sigma=0.01;
 
 %% Desired trajectory - Field points
-target_point = [20,0,0];
-obstacles = [5,0,0]./target_point;
+x_0_points=[0;0;0;];
+x_T_points=[0;0;0;];
+
+y_0_points=[0;5;5;5];
+y_T_points=[5;5;5;5];
+
+theta_0_points=[0;0;0;0];
+theta_T_points=[0;0;0;0];
 
 psi_trajectory=0;
 %% Simulation
@@ -39,6 +45,7 @@ psi_trajectory=0;
 dt = 0.1; % Step size
 final_time = 10;
 time_vector = (0:dt:final_time).';
+T = final_time/length(x_0_points);
 
 N = length(time_vector);
 

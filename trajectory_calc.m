@@ -37,15 +37,10 @@ x_SS_6(:,1) = x_SS_6_0;
 x_SS_7(:,1) = x_SS_7_0;
 
 for i=1:N-1
-    %% Circular trajectory
-    theta = x_SS_leader(3,i);
-    R=[
-    [cos(theta), sin(theta), 0];
-    [-sin(theta), cos(theta), 0];
-    [0,0,1];
-    ];
-    x_SS_leader_dot = pffield_trajectory(x_SS_leader(:,i), target_point, obstacles,R);
-    x_SS_leader(:,i+1) = x_SS_leader(:,i) + dt * x_SS_leader_dot
+    eta_desired(:,i) = line_trajectory(time_vector(i),x_SS_alpha,x_0_points,x_T_points,y_0_points,y_T_points,theta_0_points,theta_T_points,T,psi_trajectory);
+
+    x_SS_leader_dot = leader(x_SS_leader(:,i),eta_desired(:,i));
+    x_SS_leader(:,i+1) = x_SS_leader(:,i) + dt * x_SS_leader_dot;
 
     [sigma_2(:,i+1),Q_2(:,i+1),x_SS_2_dot] = subsystem_trajectory_1(2,x_SS_leader(:,i),x_SS_2(:,i),x_SS_3(:,i),...
                                                                     x_SS_4(:,i),x_SS_5(:,i),x_SS_6(:,i), x_SS_7(:,i),...
