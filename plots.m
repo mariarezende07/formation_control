@@ -2,7 +2,7 @@
 
 %% Trajetória esperada
 figure_1 = figure;
-plot(x_SS_1(1,:),x_SS_1(2,:),'LineWidth',2);
+plot(x_SS_leader(1,:),x_SS_leader(2,:),'LineWidth',2);
 
 hold on
 plot(x_SS_2(1,:),x_SS_2(2,:),'LineWidth',2);
@@ -11,18 +11,19 @@ plot(x_SS_4(1,:),x_SS_4(2,:),'LineWidth',2);
 plot(x_SS_5(1,:),x_SS_5(2,:),'LineWidth',2);
 plot(x_SS_6(1,:),x_SS_6(2,:),'LineWidth',2);
 plot(x_SS_7(1,:),x_SS_7(2,:),'LineWidth',2);
-for i=1:10:101
-    plot([x_SS_leader(1,i),x_SS_3(1,i)],[x_SS_leader(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
-    plot([x_SS_leader(1,i),x_SS_2(1,i)],[x_SS_leader(2,i),x_SS_2(2,i)],'color','k','LineWidth',1);
-
-    plot([x_SS_2(1,i),x_SS_4(1,i)],[x_SS_2(2,i),x_SS_4(2,i)],'color','k','LineWidth',1);
+for i=1:250:1001
+    
+    plot([x_SS_2(1,i),x_SS_3(1,i)],[x_SS_2(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_2(1,i),x_SS_7(1,i)],[x_SS_2(2,i),x_SS_7(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_4(1,i),x_SS_5(1,i)],[x_SS_4(2,i),x_SS_5(2,i)],'color','k','LineWidth',1);
     plot([x_SS_4(1,i),x_SS_3(1,i)],[x_SS_4(2,i),x_SS_3(2,i)],'color','k','LineWidth',1);
-
+    plot([x_SS_5(1,i),x_SS_6(1,i)],[x_SS_5(2,i),x_SS_6(2,i)],'color','k','LineWidth',1);
+    plot([x_SS_7(1,i),x_SS_6(1,i)],[x_SS_7(2,i),x_SS_6(2,i)],'color','k','LineWidth',1);
 
 end
 title("Trajetória esperada dos agentes no plano");
 
-legend('Líder','seguidor 1', 'seguidor 2','seguidor 3','location','best');
+legend('Líder','seguidor 1', 'seguidor 2','seguidor 3', 'seguidor 4','seguidor 5','seguidor 6','location','best');
 xlabel('x(m)')
 ylabel('y(m)')
 axis equal
@@ -40,15 +41,16 @@ plot(eta_5(1,:),eta_5(2,:),'LineWidth',2);
 plot(eta_6(1,:),eta_6(2,:),'LineWidth',2);
 plot(eta_7(1,:),eta_7(2,:),'LineWidth',2);
 for i=1:100:1001
-    plot([eta_1(1,i),eta_3(1,i)],[eta_1(2,i),eta_3(2,i)],'color','k','LineWidth',1);
-    plot([eta_1(1,i),eta_2(1,i)],[eta_1(2,i),eta_2(2,i)],'color','k','LineWidth',1);
-
-    plot([eta_2(1,i),eta_4(1,i)],[eta_2(2,i),eta_4(2,i)],'color','k','LineWidth',1);
+    plot([eta_2(1,i),eta_3(1,i)],[eta_2(2,i),eta_3(2,i)],'color','k','LineWidth',1);
+    plot([eta_2(1,i),eta_7(1,i)],[eta_2(2,i),eta_7(2,i)],'color','k','LineWidth',1);
+    plot([eta_4(1,i),eta_5(1,i)],[eta_4(2,i),eta_5(2,i)],'color','k','LineWidth',1);
     plot([eta_4(1,i),eta_3(1,i)],[eta_4(2,i),eta_3(2,i)],'color','k','LineWidth',1);
+    plot([eta_5(1,i),eta_6(1,i)],[eta_5(2,i),eta_6(2,i)],'color','k','LineWidth',1);
+    plot([eta_7(1,i),eta_6(1,i)],[eta_7(2,i),eta_6(2,i)],'color','k','LineWidth',1);
 end
 title("Trajetória real dos agentes no plano");
 
-legend('Líder','seguidor 1', 'seguidor 2','seguidor 3','location','best');
+legend('Líder','seguidor 1', 'seguidor 2','seguidor 3', 'seguidor 4','seguidor 5','seguidor 6','location','best');
 xlabel('x(m)')
 ylabel('y(m)')
 axis equal
@@ -76,13 +78,13 @@ print(figure_3,'-dpng','-r300','figuras/tau_formacao-hexagonal.png')
 
 
 figure_4 = figure;
-subplot(2,1,2);
+subplot(3,2,1);
 
-plot(1:1000, Q_2(1,1:1000),'LineWidth',2);
+plot(1:100, Q_2(1,1:100),'LineWidth',2);
 
 hold on
-plot(1:1000, Q_2(2,1:1000),'LineWidth',2);
-plot(1:1000, Q_2(3,1:1000),'LineWidth',2);
+plot(1:100, Q_2(2,1:100),'LineWidth',2);
+plot(1:100, Q_2(3,1:100),'LineWidth',2);
 
 title("Forças de vínculo no seguidor 2");
 
@@ -91,12 +93,12 @@ xlabel('t(s)')
 ylabel('')
 grid on
 
-subplot(2,1,2);
-plot(1:1000, Q_3(1,1:1000),'LineWidth',2);
+subplot(3,2,2);
+plot(1:100, Q_3(1,1:100),'LineWidth',2);
 
 hold on
-plot(1:1000, Q_3(2,1:1000),'LineWidth',2);
-plot(1:1000, Q_3(3,1:1000),'LineWidth',2);
+plot(1:100, Q_3(2,1:100),'LineWidth',2);
+plot(1:100, Q_3(3,1:100),'LineWidth',2);
 
 title("Forças de vínculo no seguidor 3");
 
@@ -105,12 +107,13 @@ xlabel('t(s)')
 ylabel('')
 grid on
 
-subplot(2,1,1);
-plot(1:1000, Q_4(1,1:1000),'LineWidth',2);
+subplot(3,2,3);
+
+plot(1:100, Q_4(1,1:100),'LineWidth',2);
 
 hold on
-plot(1:1000, Q_4(2,1:1000),'LineWidth',2);
-plot(1:1000, Q_4(3,1:1000),'LineWidth',2);
+plot(1:100, Q_4(2,1:100),'LineWidth',2);
+plot(1:100, Q_4(3,1:100),'LineWidth',2);
 
 title("Forças de vínculo no seguidor 4");
 
@@ -119,12 +122,12 @@ xlabel('t(s)')
 ylabel('')
 grid on
 
-subplot(2,1,2);
-plot(1:1000, Q_5(1,1:1000),'LineWidth',2);
+subplot(3,2,4);
+plot(1:100, Q_5(1,1:100),'LineWidth',2);
 
 hold on
-plot(1:1000, Q_5(2,1:1000),'LineWidth',2);
-plot(1:1000, Q_5(3,1:1000),'LineWidth',2);
+plot(1:100, Q_5(2,1:100),'LineWidth',2);
+plot(1:100, Q_5(3,1:100),'LineWidth',2);
 
 title("Forças de vínculo no seguidor 3");
 
@@ -133,12 +136,12 @@ xlabel('t(s)')
 ylabel('')
 grid on
 
-subplot(2,1,2);
-plot(1:1000, Q_6(1,1:1000),'LineWidth',2);
+subplot(3,2,5);
+plot(1:100, Q_6(1,1:100),'LineWidth',2);
 
 hold on
-plot(1:1000, Q_6(2,1:1000),'LineWidth',2);
-plot(1:1000, Q_6(3,1:1000),'LineWidth',2);
+plot(1:100, Q_6(2,1:100),'LineWidth',2);
+plot(1:100, Q_6(3,1:100),'LineWidth',2);
 
 title("Forças de vínculo no seguidor 3");
 
@@ -147,12 +150,12 @@ xlabel('t(s)')
 ylabel('')
 grid on
 
-subplot(2,1,2);
-plot(1:1000, Q_7(1,1:1000),'LineWidth',2);
+subplot(3,2,6);
+plot(1:100, Q_7(1,1:100),'LineWidth',2);
 
 hold on
-plot(1:1000, Q_7(2,1:1000),'LineWidth',2);
-plot(1:1000, Q_7(3,1:1000),'LineWidth',2);
+plot(1:100, Q_7(2,1:100),'LineWidth',2);
+plot(1:100, Q_7(3,1:100),'LineWidth',2);
 
 title("Forças de vínculo no seguidor 3");
 
@@ -179,7 +182,7 @@ plot(1:1000,x_SS_7(1,1:1000),'LineWidth',2);
 
 xlabel('t(s)')
 ylabel('x(m)')
-legend('Líder','seguidor 1', 'seguidor 2','location','best');
+legend('Líder','seguidor 1', 'seguidor 2','seguidor 3', 'seguidor 4','seguidor 5','seguidor 6','location','best');
 
 grid on
 
@@ -195,7 +198,7 @@ plot(1:1000,x_SS_7(2,1:1000),'LineWidth',2);
 
 xlabel('t(s)')
 ylabel('y(m)')
-legend('Líder','seguidor 1', 'seguidor 2','location','best');
+legend('Líder','seguidor 1', 'seguidor 2','seguidor 3', 'seguidor 4','seguidor 5','seguidor 6','location','best');
 
 grid on
 
@@ -222,7 +225,7 @@ plot(1:1000,eta_7(1,1:1000),'LineWidth',2);
 
 xlabel('t(s)')
 ylabel('x(m)')
-legend('Líder','seguidor 1', 'seguidor 2','seguidor 3','location','best');
+legend('Líder','seguidor 1', 'seguidor 2','seguidor 3', 'seguidor 4','seguidor 5','seguidor 6','location','best');
 
 grid on
 
@@ -239,7 +242,7 @@ plot(1:1000,eta_7(2,1:1000),'LineWidth',2);
 
 xlabel('t(s)')
 ylabel('y(m)')
-legend('Líder','seguidor 1', 'seguidor 2','seguidor 3','location','best');
+legend('Líder','seguidor 1', 'seguidor 2','seguidor 3', 'seguidor 4','seguidor 5','seguidor 6','location','best');
 
 grid on
 

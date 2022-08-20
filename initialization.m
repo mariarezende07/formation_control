@@ -43,7 +43,7 @@ psi_trajectory=0;
 %% Simulation
 
 dt = 0.1; % Step size
-final_time = 10;
+final_time = 100;
 time_vector = (0:dt:final_time).';
 T = final_time/length(x_0_points);
 
@@ -70,7 +70,7 @@ trajectory_calc
 %     end
 % end
 %% 
-k_sigma_best = 10;
+k_sigma_best = 5;
 lambda_sigma_best = 0.1;
 k_sigma = k_sigma_best; % 10
 lambda_sigma = lambda_sigma_best; % 0.1
