@@ -40,7 +40,7 @@ plot(eta_4(1,:),eta_4(2,:),'LineWidth',2);
 plot(eta_5(1,:),eta_5(2,:),'LineWidth',2);
 plot(eta_6(1,:),eta_6(2,:),'LineWidth',2);
 plot(eta_7(1,:),eta_7(2,:),'LineWidth',2);
-for i=1:100:1001
+for i=1:250:1001
     plot([eta_2(1,i),eta_3(1,i)],[eta_2(2,i),eta_3(2,i)],'color','k','LineWidth',1);
     plot([eta_2(1,i),eta_7(1,i)],[eta_2(2,i),eta_7(2,i)],'color','k','LineWidth',1);
     plot([eta_4(1,i),eta_5(1,i)],[eta_4(2,i),eta_5(2,i)],'color','k','LineWidth',1);
