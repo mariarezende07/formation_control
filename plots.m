@@ -55,18 +55,46 @@ print(figure_2,'-dpng','-r300','figuras/trajetoria-real_formacao-quadrado.png')
 
 
 figure_3 = figure;
-plot(1:1000, tau(1,:),'LineWidth',2);
+subplot(3,1,1);
+plot(1:1000, tau_2(1,1:1000),'LineWidth',2);
 
 hold on
-plot(1:1000, tau(2,:),'LineWidth',2);
-plot(1:1000, tau(3,:),'LineWidth',2);
+plot(1:1000, tau_2(2,1:1000),'LineWidth',2);
+plot(1:1000, tau_2(3,1:1000),'LineWidth',2);
 
-title("Força de controle");
+title("Força de controle \tau do seguidor 1");
 
-xlabel('t(s)')
-ylabel('tau(N)')
 legend('f_u(N)','f_v(N)', 'n_r(Nm)','location','best');
+xlabel('t(s)')
+ylabel('')
+grid on
 
+subplot(3,1,2);
+plot(1:1000, tau_3(1,1:1000),'LineWidth',2);
+
+hold on
+plot(1:1000, tau_3(2,1:1000),'LineWidth',2);
+plot(1:1000, tau_3(3,1:1000),'LineWidth',2);
+
+title("Força de controle \tau do seguidor 2");
+
+legend('f_u(N)','f_v(N)', 'n_r(Nm)','location','best');
+xlabel('t(s)')
+ylabel('')
+grid on
+
+subplot(3,1,3);
+plot(1:1000, tau_4(1,1:1000),'LineWidth',2);
+
+hold on
+plot(1:1000, tau_4(2,1:1000),'LineWidth',2);
+plot(1:1000, tau_4(3,1:1000),'LineWidth',2);
+
+title("Força de controle \tau do seguidor 3");
+
+legend('f_u(N)','f_v(N)', 'n_r(Nm)','location','best');
+xlabel('t(s)')
+ylabel('')
 grid on
 print(figure_3,'-dpng','-r300','figuras/tau_formacao-quadrado.png')
 
