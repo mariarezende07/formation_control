@@ -47,17 +47,32 @@ print(figure_2,'-dpng','-r300','figuras/trajetoria-real_formacao-triangular.png'
 
 
 figure_3 = figure;
-plot(1:1000, tau(1,:),'LineWidth',2);
+subplot(2,1,1);
+plot(1:1000, tau_2(1,1:1000),'LineWidth',2);
 
 hold on
-plot(1:1000, tau(2,:),'LineWidth',2);
-plot(1:1000, tau(3,:),'LineWidth',2);
+plot(1:1000, tau_2(2,1:1000),'LineWidth',2);
+plot(1:1000, tau_2(3,1:1000),'LineWidth',2);
 
-title("Força de controle");
+title("Força de controle \tau do seguidor 1");
+
 legend('f_u(N)','f_v(N)', 'n_r(Nm)','location','best');
-
 xlabel('t(s)')
-ylabel('\tau(N)')
+ylabel('')
+grid on
+
+subplot(2,1,2);
+plot(1:1000, tau_3(1,1:1000),'LineWidth',2);
+
+hold on
+plot(1:1000, tau_3(2,1:1000),'LineWidth',2);
+plot(1:1000, tau_3(3,1:1000),'LineWidth',2);
+
+title("Força de controle \tau do seguidor 2");
+
+legend('f_u(N)','f_v(N)', 'n_r(Nm)','location','best');
+xlabel('t(s)')
+ylabel('')
 grid on
 print(figure_3,'-dpng','-r300','figuras/tau_formacao-triangular.png')
 

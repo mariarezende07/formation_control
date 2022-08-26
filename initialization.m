@@ -49,26 +49,10 @@ N = length(time_vector);
 
 trajectory_calc
 
-%%
-lambda_sigma_list=0.1:0.5:5;
-k_sigma_list=1:1:10;
-worst_error = 100;
-for i=1:10
-    lambda_sigma = lambda_sigma_list(i);
-    k_sigma = k_sigma_list(i);
-    state_propagation
-    erro = x_SS_leader(1:3,:) - eta_1;   
-    if max(erro,[],'all') < worst_error
-        worst_error = max(erro,[],'all');
-        k_sigma_best = k_sigma;
-        lambda_sigma_best = lambda_sigma;
-    end
-end
+
 %% 
 
-k_sigma = k_sigma_best; % 5
-lambda_sigma = lambda_sigma_best; % 2.1
+k_sigma = 5; % 5
+lambda_sigma = 2.1; % 2.1
 state_propagation
 
-%% Ploting
-plots
