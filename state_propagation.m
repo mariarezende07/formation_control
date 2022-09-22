@@ -56,13 +56,13 @@ for i=1:n_agents
 
         b = -lambda_sigma*eta_dot_tilt - k_sigma*tanh(sigma);
 
-        tau(:,j) = udwadia_kalaba_control(A, b, R, eval(['x_SS_',num2str(i),'(4:6,',num2str(j),')']));
+        eval(['tau_',num2str(i),'(:,',num2str(j),') = udwadia_kalaba_control(A, b, R, x_SS_',num2str(i),'(4:6,',num2str(j),'));']);
 
         n_v = [-m*(v+xbc);
                m*(u-ybc);
                m*(xbc*u+ybc*v);];
 
-        eval(['zeta_',num2str(i),'_dot(:,',num2str(j),'+1) = M^(-1)*(tau(:,j)- n_v);']);
+        eval(['zeta_',num2str(i),'_dot(:,',num2str(j),'+1) = M^(-1)*(tau_',num2str(i),'(:,',num2str(j),')- n_v);']);
         eval(['zeta_',num2str(i),'(:,',num2str(j),'+1) = zeta_',num2str(i),'(:,',num2str(j),') + dt* zeta_',num2str(i),'_dot(:,',num2str(j),');']);
 
         eval(['eta_',num2str(i),'(:,',num2str(j),'+1) = eta_',num2str(i),'(:,',num2str(j),') + dt * R * zeta_',num2str(i),'(:,',num2str(j),');']);
