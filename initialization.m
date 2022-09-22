@@ -30,14 +30,14 @@ l_sigma=5;
 epsilon_sigma=0.01;
 
 %% Desired trajectory - Field points
-x_0_points=[0;0;0;];
-x_T_points=[0;0;0;];
+x_0_points=[0;0;10;10;0;0];
+x_T_points=[0;10;10;0;0;0];
 
-y_0_points=[0;5;5;5];
-y_T_points=[5;5;5;5];
+y_0_points=[0;10;10;0;0;0];
+y_T_points=[10;10;0;0;0;0];
 
-theta_0_points=[0;0;0;0];
-theta_T_points=[0;0;0;0];
+theta_0_points=[0;0;0;0;0;0];
+theta_T_points=[0;0;0;0;0;0];
 
 psi_trajectory=0;
 %% Simulation
